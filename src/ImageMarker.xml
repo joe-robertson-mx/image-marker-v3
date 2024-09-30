@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="mendix.imagemarker.ImageMarker" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>ImageMarker</name>
+    <description>Mark up images with points</description>
+    <icon/>
+    <properties>
+        <propertyGroup caption="General">
+            <property key="image" type="image" required="true">
+                <caption>Image for markup</caption>
+                <description>The Image to be marked up.</description>
+            </property>
+            <property key="columns" type="integer" required="true" defaultValue="3">
+                <caption>Columns</caption>
+                <description>Columns required</description>
+            </property>
+            <property key="rows" type="integer" required="true" defaultValue="3">
+                <caption>Rows</caption>
+                <description>Rows required</description>
+            </property>
+            <property key="showGrid" type="boolean" required="true" defaultValue="false">
+                <caption>Show Grid</caption>
+                <description>Show the grid lines</description>
+            </property>
+            <property key="showMarkUp" type="boolean" required="true" defaultValue="false">
+                <caption>Show Color Markup</caption>
+                <description>Show color coded areas</description>
+            </property>
+            <property key="lowLimit" type="attribute" required="false">
+                <caption>Low Limit</caption>
+                <description>Lower limit for lowest color</description>
+                <attributeTypes>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="highLimit" type="attribute" required="false">
+                <caption>Upper Limit</caption>
+                <description>Upper limit for highest color</description>
+                <attributeTypes>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="data" type="datasource" isList="true" required="true">
+                <caption>Object type</caption>
+                <description>Select the object type the image should be saved as (must be a specialisation of Image)</description>
+            </property>
+            <property key="height" type="integer" required="true" defaultValue="500">
+                <caption>Height</caption>
+                <description>The height of the canvas in px</description>
+            </property>
+            <property key="context" type="datasource" isList="true" required="false">
+                <caption>Context</caption>
+                <description>Provide a parent entity to link the image created to. Please note that the association between the parent and child must contain the name of the parent entity</description>
+            </property>
+            <property key="points" type="datasource" isList="true" required="true">
+                <caption>Points</caption>
+                <description>List of points to be displayed on the image</description>
+            </property>
+            <property key="xParentAttribute" type="attribute" required="true">
+                <caption>X Parent Attribute</caption>
+                <description>Attribute to store the X coordinate of the parent</description>
+                <attributeTypes>
+                    <attributeType name="Decimal"/>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="yParentAttribute" type="attribute" required="true">
+                <caption>Y Parent Attribute</caption>
+                <description>Attribute to store the Y coordinate of the parent</description>
+                <attributeTypes>
+                    <attributeType name="Decimal"/>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="xPointAttribute" type="attribute" dataSource="points" required="true">
+                <caption>X Point Attribute</caption>
+                <description>Attribute to store the X coordinate of the point</description>
+                <attributeTypes>
+                    <attributeType name="Decimal"/>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="yPointAttribute" type="attribute" dataSource="points" required="true">
+                <caption>Y Point Attribute</caption>
+                <description>Attribute to store the Y coordinate of the point</description>
+                <attributeTypes>
+                    <attributeType name="Decimal"/>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="colorAttribute" type="attribute" dataSource="points" required="true">
+                <caption>Color Attribute</caption>
+                <description>Attribute to store the color of the point</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
+            </property>
+            <property key="action" type="action" required="true">
+                <caption>Action</caption>
+                <description>Action to be performed when a point is clicked</description>
+            </property>
+            <property key="pointSize" type="attribute" dataSource="points" required="true">
+                <caption>Point Size</caption>
+                <description>Size of the points in pixels</description>
+                <attributeTypes>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Colors">
+            <property key="pointColor" type="string" required="true">
+                <caption>Points Color</caption>
+                <description>CSS style color description</description>
+            </property>
+            <property key="lineColor" type="string" required="false">
+                <caption>Line Color</caption>
+                <description>CSS style color description</description>
+            </property>
+            <property key="lowColor" type="string" required="false">
+                <caption>OK Color</caption>
+                <description>CSS style color description</description>
+            </property>
+            <property key="medColor" type="string" required="false">
+                <caption>Minor Issue Color</caption>
+                <description>CSS style color description</description>
+            </property>
+            <property key="highColor" type="string" required="false">
+                <caption>Significant Issue Color</caption>
+                <description>CSS style color description</description>
+            </property>
+        </propertyGroup>
+    </properties>
+</widget>
